@@ -1,6 +1,5 @@
 
-<label> Server Name </label>
-<!--One way binding
+  <!--One way binding
   <input
   type="text"
   class="form-control"
@@ -11,17 +10,27 @@
   This is done by adding the FormsModule  to the imports[]  array in the AppModule (app.module.ts).
   You then also need to add the import from @angular/forms  in the app.module.ts file:
   import { FormsModule } from '@angular/forms';
--->
+
   <input
     type="text"
     class="form-control"
     [(ngModel)] = "serverName"/>
 
-  <!--<p>{{ serverName}} </p> -->
+    <button class="btn btn-primary"
+      [disabled]="!allowNewServer"
+      (click)="onCreateServer()" >Add Server </button>
+    <p>{{ serverCreationStatus }}</p>
 
-<button class="btn btn-primary"
-  [disabled]="!allowNewServer"
-  (click)="onCreateServer()" >Add Server </button>
-<p>{{ serverCreationStatus }}</p>
-<app-server></app-server>
-<app-server></app-server>
+    <app-server></app-server>
+    <app-server></app-server>
+-->
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)] = "username"/>
+
+      <p> My username is: {{ username }} </p>
+
+      <button class="btn btn-primary"
+        [disabled]="0 === username.length"
+        (click)="cleanUserName()" >Clear ALL </button>
