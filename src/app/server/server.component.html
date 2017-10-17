@@ -1,1 +1,16 @@
-<p> Server with ID {{ serverId }} is {{ getServerStatus() }} </p>
+<!-- Unlike structural directives, attribute directives don't add or remove elements. They only changes the element they where placed on. -->
+<!--<p [ngStyle]="{'background-color': getColor()}"> Server with ID {{ serverId }} is {{ getServerStatus() }} </p>-->
+<!--
+NgClass with object using braces { }
+It will be in key and value pair format separated by colon (:).
+  key: CSS class name.
+  value: An expression that returns Boolean value.
+
+  Here key will be CSS class name and value will be an expression that will return Boolean value.
+  CSS will be added at run time in HTML element only when if expression will return true
+-->
+
+<p [ngStyle]="{backgroundColor: getColor()}"
+  [ngClass]="{online: serverStatus==='online'}">
+  Server with ID {{ serverId }} is {{ getServerStatus() }}
+</p>

@@ -1,5 +1,6 @@
 
-  <!--One way binding
+<label> Server Name </label>
+<!--One way binding
   <input
   type="text"
   class="form-control"
@@ -10,27 +11,32 @@
   This is done by adding the FormsModule  to the imports[]  array in the AppModule (app.module.ts).
   You then also need to add the import from @angular/forms  in the app.module.ts file:
   import { FormsModule } from '@angular/forms';
-
+-->
   <input
     type="text"
     class="form-control"
     [(ngModel)] = "serverName"/>
 
-    <button class="btn btn-primary"
-      [disabled]="!allowNewServer"
-      (click)="onCreateServer()" >Add Server </button>
-    <p>{{ serverCreationStatus }}</p>
+  <!--<p>{{ serverName}} </p> -->
 
-    <app-server></app-server>
-    <app-server></app-server>
+<button class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()" >Add Server </button>
+  <p *ngIf="serverCreated"> Server was created, server name is {{ serverName }} </p>
+  <!--
+  if-else
+  <p *ngIf="serverCreated; else noServer"> Server was created, server name is {{ serverName }} </p>
+  <ng-template #noServer>
+    <p>No server was created! </p>
+  </ng-template>
 -->
-    <input
-      type="text"
-      class="form-control"
-      [(ngModel)] = "username"/>
 
-      <p> My username is: {{ username }} </p>
+<!--<p>{{ serverCreationStatus }}</p>-->
+<!--NgFor is a directive that iterates over collection of data. It is used to customize data display.
+ Whenever there is change in collection of data at runtime, that will be updated in data display iterated by NgFor directive.
+  NgFor provides local variables that will help to get index of current iteration,
+  detect if element in iteration is first or last and odd or even.
+   NgFor is used with HTML element as well as component element.
+  -->
 
-      <button class="btn btn-primary"
-        [disabled]="0 === username.length"
-        (click)="cleanUserName()" >Clear ALL </button>
+<div *ngFor="let server of servers; let i = index"> Número de Servidores {{ i + ' '+ server}}  </div>
